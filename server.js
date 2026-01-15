@@ -1,6 +1,18 @@
 import express from 'express';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+
+/**
+ ************* Configure Express middleware *************
+ */
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 const name = process.env.NAME; // <-- NEW
 
@@ -29,6 +41,23 @@ app.set('views', path.join(__dirname, 'src/views'));
 /**
  ************* Routes *************
  */
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/views/home.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/views/about.html'));
+});
+
+app.get('/products', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src/views/products.html'));
+});
+
+
+
+
+
 app.get('/', (req, res) => {
     const title = 'Welcome Home';
     res.render('home', { title });
