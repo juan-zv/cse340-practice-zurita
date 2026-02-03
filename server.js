@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 // Import MVC components
-import routes from './src/controllers/routes.js';
+import routes from './src/routes.js';
 import { addLocalVariables } from './src/middleware/global.js';
 
 /**
