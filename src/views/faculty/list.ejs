@@ -5,9 +5,9 @@
 
     <div class="sort-options">
         <span>Sort by: </span>
-        <a href="/faculty" class="<%= sortBy === 'name' ? 'active' : '' %>">Name</a>
-        <a href="/faculty?sort=department" class="<%= sortBy === 'department' ? 'active' : '' %>">Department</a>
-        <a href="/faculty?sort=title" class="<%= sortBy === 'title' ? 'active' : '' %>">Title</a>
+        <a href="/faculty?sortBy=name" class="<%= sortBy === 'name' ? 'active' : '' %>">Name</a>
+        <a href="/faculty?sortBy=department" class="<%= sortBy === 'department' ? 'active' : '' %>">Department</a>
+        <a href="/faculty?sortBy=title" class="<%= sortBy === 'title' ? 'active' : '' %>">Title</a>
     </div>
 
     <div class="faculty-list">
