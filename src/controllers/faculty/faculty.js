@@ -12,7 +12,7 @@ const facultyListPage = (req, res) => {
 };
 
 const facultyDetailPage = (req, res) => {
-    const facultyId = req.params.id;
+    const facultyId = req.params.facultyID;
     const facultyMember = getFacultyById(facultyId);
     if (!facultyMember) {
         return res.status(404).render('errors/404', {
