@@ -16,7 +16,7 @@ router.get('/about', aboutPage);
 
 // Course catalog routes
 router.get('/catalog', catalogPage);
-router.get('/catalog/:courseId', courseDetailPage);
+router.get('/catalog/:slugId', courseDetailPage);
 
 // Demo page with special middleware
 router.get('/demo', addDemoHeaders, demoPage);
@@ -26,7 +26,7 @@ router.get('/test-error', testErrorPage);
 
 // Route for faculty list and detail pages
 router.get('/faculty', facultyListPage);
-router.get('/faculty/:facultyID', facultyDetailPage);
+router.get('/faculty/:slugId', facultyDetailPage);
 
 // Export the router to be used in the main app
 export default router;

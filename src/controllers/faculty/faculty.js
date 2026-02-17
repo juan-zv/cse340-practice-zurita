@@ -1,8 +1,8 @@
-import { getFacultyById, getSortedFaculty } from '../../models/faculty/faculty.js';
+import { getFacultyBySlug, getSortedFaculty } from '../../models/faculty/faculty.js';
 
-const facultyListPage = (req, res) => {
+const facultyListPage = async (req, res) => {
     const sortBy = req.query.sortBy || 'department';
-    const facultyMembers = getSortedFaculty(sortBy);
+    const facultyMembers = await getSortedFaculty(sortBy);
 
     res.render('faculty/list', {
         title: 'Faculty Members',
@@ -11,10 +11,10 @@ const facultyListPage = (req, res) => {
     });
 };
 
-const facultyDetailPage = (req, res) => {
-    const facultyId = req.params.facultyID;
-    const facultyMember = getFacultyById(facultyId);
-    if (!facultyMember) {
+const facultyDetailPage = async (req, res) => {
+    const facultySlug = req.params.slugId;
+    const facultyMember = await getFacultyBySlug(facultySlug);
+    if (Object.keys(facultyMember).length === 0) {
         return res.status(404).render('errors/404', {
             title: 'Faculty Member Not Found',
             message: 'The requested faculty member does not exist.',

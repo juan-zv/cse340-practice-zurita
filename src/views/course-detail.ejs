@@ -18,13 +18,17 @@
         </div>
 
         <div class="section-list">
-            <% course.sections.forEach(section => { %>
-                <div class="section-card">
-                    <div class="section-time"><%= section.time %></div>
-                    <div class="section-room">Room: <%= section.room %></div>
-                    <div class="section-professor">Instructor: <%= section.professor %></div>
-                </div>
-            <% }); %>
+            <% if (sections.length === 0) { %>
+                <p>No sections available.</p>
+            <% } else { %>
+                <% sections.forEach(section => { %>
+                    <div class="section-card">
+                        <div class="section-time"><%= section.time %></div>
+                        <div class="section-room">Room: <%= section.room %></div>
+                        <div class="section-professor">Instructor: <%= section.professor %></div>
+                    </div>
+                <% }); %>
+            <% } %>
         </div>
     </div>
 
