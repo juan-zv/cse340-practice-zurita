@@ -7,7 +7,7 @@ const catalogPage = async (req, res) => {
     // Model functions are async, so we must await them
     const courses = await getAllCourses();
     
-    res.render('catalog', {
+    res.render('catalog/catalog', {
         title: 'Course Catalog',
         courses: courses
     });
@@ -29,7 +29,7 @@ const courseDetailPage = async (req, res, next) => {
         return next(err);
     }
     
-    res.render('course-detail', {
+    res.render('catalog/course-detail', {
         title: `${course.courseCode} - ${course.name}`,
         course: course,
         sections: sections,

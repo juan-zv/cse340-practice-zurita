@@ -7,8 +7,17 @@ import { facultyListPage, facultyDetailPage } from './controllers/faculty/facult
 // Create a new router instance
 const router = Router();
 
-// TODO: Add import statements for controllers and middleware
-// TODO: Add route definitions
+// Add catalog-specific styles to all catalog routes
+router.use('/catalog', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    res.addStyle('<link rel="stylesheet" href="/css/catalog.css">');
+    next();
+});
+
+router.use('/faculty', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    next();
+});
 
 // Home and basic pages
 router.get('/', homePage);
