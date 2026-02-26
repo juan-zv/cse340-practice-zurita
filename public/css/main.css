@@ -142,8 +142,18 @@ main {
     }
 }
 
+/* Faculty Grid */
+.faculty-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2rem;
+    max-width: 100%;
+    margin: 0 auto 2rem auto;
+}
+
 /* Faculty Card (Shared) */
-.faculty-card {
+.faculty-card, .default-card, .faculty-photo-detail {
+    max-width: max-content;
     position: relative;
     border: var(--border-width) solid var(--border-color);
     background: #fff;
@@ -158,7 +168,7 @@ main {
 }
 
 .faculty-photo {
-    width: 100%;
+    max-width: 350px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;

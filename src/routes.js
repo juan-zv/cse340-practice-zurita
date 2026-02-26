@@ -57,6 +57,11 @@ router.use('/demo', (req, res, next) => {
     next();
 });
 
+router.use('/about', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    next();
+});
+
 
 // Home and basic pages
 router.get('/', homePage);
