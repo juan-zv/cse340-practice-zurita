@@ -21,27 +21,41 @@ router.use('/catalog', (req, res, next) => {
 
 router.use('/faculty', (req, res, next) => {
     res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    res.addStyle('<link rel="stylesheet" href="/css/faculty.css">');
     next();
 });
 
 // Add contact-specific styles to all contact routes
 router.use('/contact', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
     res.addStyle('<link rel="stylesheet" href="/css/contact.css">');
     next();
 });
 
 // Add registration-specific styles to all registration routes
 router.use('/register', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
     res.addStyle('<link rel="stylesheet" href="/css/registration.css">');
     next();
 });
 
 // Add login-specific styles to all login routes
 router.use('/login', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
     res.addStyle('<link rel="stylesheet" href="/css/login.css">');
     next();
 });
 
+router.use('/dashboard', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    res.addStyle('<link rel="stylesheet" href="/css/login.css">');
+    next();
+});
+
+router.use('/demo', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/main.css">');
+    next();
+});
 
 
 // Home and basic pages

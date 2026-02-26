@@ -1,23 +1,9 @@
-import { body, validationResult } from 'express-validator';
+import { validationResult } from 'express-validator';
 import { findUserByEmail, verifyPassword } from '../../models/forms/login.js';
 import { Router } from 'express';
+import { loginValidation } from '../../middleware/validation/forms.js';
 
 const router = Router();
-
-/**
- * Validation rules for login form
- */
-const loginValidation = [
-    body('email')
-        .trim()
-        .isEmail()
-        .withMessage('Please provide a valid email address')
-        .normalizeEmail(),
-
-    body('password')
-        .isLength({ min: 8 })
-        .withMessage('Password is required')
-];
 
 /**
  * Display the login form.
@@ -38,6 +24,7 @@ const processLogin = async (req, res) => {
     if (!errors.isEmpty()) {
         // TODO: Log validation errors to console
         console.error('Validation errors:', errors.array());
+        req.flash('error', 'Invalid email or password format. Please try again.');
         // TODO: Redirect back to /login
         return res.redirect('/login');
     }
@@ -51,6 +38,7 @@ const processLogin = async (req, res) => {
         // TODO: If not found, log "User not found" and redirect to /login
         if (!user) {
             console.log('User not found');
+            req.flash('error', 'User not found');
             return res.redirect('/login');
         }
         // TODO: Verify password using verifyPassword(password, user.password)
@@ -58,6 +46,7 @@ const processLogin = async (req, res) => {
         const isPasswordValid = await verifyPassword(password, user.password);
         if (!isPasswordValid) {
             console.log('Invalid password');
+            req.flash('error', 'Invalid password');
             return res.redirect('/login');
         }
 
@@ -67,12 +56,14 @@ const processLogin = async (req, res) => {
         // TODO: Store user in session: req.session.user = user
         req.session.user = user;
         // TODO: Redirect to /dashboard
+        req.flash('success', 'Login successful! Welcome back.');
         res.redirect('/dashboard');
     } catch (error) {
         // Model functions do not catch errors, so handle them here
         // TODO: Log error to console
         console.error('Error processing login:', error);
         // TODO: Redirect to /login
+        req.flash('error', 'An error occurred during login. Please try again.');
         res.redirect('/login');
     }
 };

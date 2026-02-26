@@ -1,18 +1,28 @@
+:root {
+    --primary-color: #74b9ff;
+}
+
 /* Login Form Styles */
 .login-form {
     max-width: 500px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    margin: 4rem auto;
+    padding: 3rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 0;
     background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 0 0 var(--border-color);
 
     h2 {
         text-align: center;
-        color: #2c5aa0;
+        background-color: var(--primary-color);
+        border: 2px solid var(--border-color);
+        padding: 0.5rem;
         margin-top: 0;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 4px 4px 0 0 var(--border-color);
+        color: #000;
+        font-weight: 900;
+        text-transform: uppercase;
     }
 
     .form-group {
@@ -21,24 +31,25 @@
         label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #333;
+            font-weight: 800;
+            text-transform: uppercase;
         }
 
         input {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0;
+            font-size: 1.1rem;
             font-family: inherit;
             box-sizing: border-box;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background: #fdfdfd;
 
             &:focus {
                 outline: none;
-                border-color: #2c5aa0;
-                box-shadow: 0 0 5px rgba(44, 90, 160, 0.3);
+                background-color: #fff;
+                box-shadow: 5px 5px 0 0 var(--border-color);
+                transform: translate(-2px, -2px);
             }
         }
     }
@@ -46,36 +57,45 @@
     button[type="submit"] {
         width: 100%;
         padding: 1rem;
-        background-color: #2c5aa0;
+        background-color: #000;
         color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 500;
+        border: 2px solid #000;
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 1.2rem;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        margin-top: 1rem;
 
         &:hover {
-            background-color: #1e3a6f;
+            background-color: #fff;
+            color: #000;
+            box-shadow: 6px 6px 0 0 rgba(0,0,0,0.5);
+            transform: translate(-3px, -3px);
         }
-
+        
         &:disabled {
             background-color: #ccc;
             cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
     }
 
     .form-footer {
-        margin-top: 1.5rem;
+        margin-top: 2rem;
         text-align: center;
         font-size: 0.9rem;
+        font-weight: bold;
+        border-top: 2px dashed #000;
+        padding-top: 1rem;
 
         a {
-            color: #2c5aa0;
-            text-decoration: none;
-
+            color: #000;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            
             &:hover {
-                text-decoration: underline;
+                background-color: var(--secondary-color);
             }
         }
     }
@@ -86,86 +106,108 @@
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
+    border: var(--border-width) solid var(--border-color);
+    background: #fff;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 0 var(--border-color);
 
     h1 {
-        color: #2c5aa0;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
+        border-bottom: 4px solid var(--border-color);
+        padding-bottom: 0.5rem;
     }
 
     & > p {
         margin-bottom: 2rem;
-        color: #666;
+        color: #000;
+        font-weight: 500;
     }
 
     .user-info,
     .session-debug {
         background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
+        border: 2px solid var(--border-color);
         padding: 1.5rem;
         margin-bottom: 2rem;
+        box-shadow: 4px 4px 0 0 rgba(0,0,0,0.1);
 
         h2,
         h3 {
-            color: #2c5aa0;
+            background: var(--secondary-color);
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border: 2px solid var(--border-color);
             margin-top: 0;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            color: #000;
         }
 
         .user-detail {
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 0.5rem;
 
             .label {
-                font-weight: bold;
-                color: #495057;
+                font-weight: 900;
+                color: #000;
+                text-transform: uppercase;
                 display: inline-block;
-                width: 120px;
+                width: 150px;
+                font-size: 0.9rem;
             }
 
             .value {
-                color: #333;
+                color: #000;
+                font-family: monospace;
             }
         }
     }
 
     .session-debug {
+        background-color: #f8f9fa;
+        
         pre {
-            background-color: #f1f3f4;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
+            background-color: #000;
+            color: #0f0;
+            border: 2px solid #000;
             padding: 1rem;
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.4;
             overflow-x: auto;
             white-space: pre-wrap;
             word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
         }
     }
 
     .dashboard-actions {
         text-align: center;
+        margin-top: 2rem;
 
         .logout-button {
             display: inline-block;
-            background-color: #dc3545;
-            color: white;
-            padding: 0.75rem 2rem;
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 1rem 3rem;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            border: 2px solid #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            box-shadow: 4px 4px 0 0 #000;
+            transition: all 0.2s;
 
             &:hover {
-                background-color: #c82333;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                text-decoration: none;
-                color: white;
+                transform: translate(-2px, -2px);
+                box-shadow: 6px 6px 0 0 #000;
+                background-color: #fff;
             }
 
             &:active {
-                transform: translateY(1px);
+                transform: translate(2px, 2px);
+                box-shadow: 0 0 0 0 #000;
             }
         }
     }
@@ -176,20 +218,19 @@
     max-width: 500px;
     margin: 1rem auto;
     padding: 1rem;
-    border-radius: 6px;
     text-align: center;
-    font-weight: 500;
+    font-weight: bold;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0 0 #000;
 
     &.success {
         background-color: #d4edda;
-        border: 1px solid #c3e6cb;
-        color: #155724;
+        color: #000;
     }
 
     &.error {
-        background-color: #f8d7da;
-        border: 1px solid #f5c6cb;
-        color: #721c24;
+        background-color: #ff7675;
+        color: #000;
     }
 }
 
@@ -199,9 +240,12 @@
     .dashboard {
         margin: 1rem;
         padding: 1rem;
+        width: auto;
     }
 
     .user-detail .label {
-        width: 100px;
+        width: 100% !important;
+        display: block !important;
+        margin-bottom: 0.25rem;
     }
 }
